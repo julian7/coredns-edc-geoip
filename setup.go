@@ -6,7 +6,7 @@ import (
 	"github.com/coredns/coredns/plugin"
 )
 
-const pluginName = "edc_geoip"
+const pluginName = "edcgeoip"
 
 func init() {
 	plugin.Register(pluginName, setup)
@@ -44,7 +44,7 @@ func geoipParse(c *caddy.Controller) (*GeoIP, error) {
 		}
 
 		for c.NextBlock() {
-			if c.Val() != "edns-subnet" {
+			if c.Val() != "enable-edc" {
 				return nil, c.Errf("unknown property %q", c.Val())
 			}
 			edns0 = true
